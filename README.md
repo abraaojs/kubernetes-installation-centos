@@ -38,8 +38,6 @@
 <a id="deploy"></a>
 ## How to deploy kubernetes cluster ?
 
-*Checkout the code  (git clone https://github.com/SubhakarKotta/k8s-installation-centos.git)* 
-
 ## ***Step 1***
 
 ***Update host names for all nodes***
