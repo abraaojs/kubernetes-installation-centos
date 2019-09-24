@@ -18,7 +18,7 @@ kubeadm init --ignore-preflight-errors all --pod-network-cidr=10.244.0.0/16 --to
 echo "[TASK 3] Install Flannel"
 sysctl net.bridge.bridge-nf-call-iptables=1
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
+#kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
 echo "[TASK 4] Display PODS"
 kubectl get pods --all-namespaces
