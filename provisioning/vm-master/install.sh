@@ -13,7 +13,7 @@ echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> ~/.bash_profile
 source ~/.bash_profile
 
 echo "[TASK 2] Start master"
-kubeadm init --ignore-preflight-errors all --pod-network-cidr=10.244.0.0/16 --token-ttl 0
+kubeadm init --kubernetes-version=1.15.0 --ignore-preflight-errors all --pod-network-cidr=10.244.0.0/16 --token-ttl 0
 
 echo "[TASK 3] Install Flannel"
 sysctl net.bridge.bridge-nf-call-iptables=1
@@ -35,8 +35,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 echo "[TASK 7] Display All Services"
 kubectl get services -n kube-system 
-
-
 
 figlet NFS
 yum -y install nfs-utils
