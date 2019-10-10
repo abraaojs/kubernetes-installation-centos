@@ -29,9 +29,9 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-echo "[TASK 6] Install Dashboard"
-kubectl apply -f kubernetes-dashboard.yaml
-kubectl apply -f kubernetes-dashboard-rbac.yaml
+#echo "[TASK 6] Install Dashboard"
+#kubectl apply -f kubernetes-dashboard.yaml
+#kubectl apply -f kubernetes-dashboard-rbac.yaml
 
 echo "[TASK 7] Display All Services"
 kubectl get services -n kube-system 
