@@ -13,12 +13,12 @@ echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> ~/.bash_profile
 source ~/.bash_profile
 
 echo "[TASK 2] Start master"
-kubeadm init --kubernetes-version=1.15.0 --ignore-preflight-errors all --pod-network-cidr=10.244.0.0/16 --token-ttl 0
+kubeadm init --ignore-preflight-errors all --pod-network-cidr=10.244.0.0/16 --token-ttl 0
 
 echo "[TASK 3] Install Flannel"
 sysctl net.bridge.bridge-nf-call-iptables=1
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-#kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
 
 echo "[TASK 4] Display PODS"
 kubectl get pods --all-namespaces
@@ -29,12 +29,14 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-#echo "[TASK 6] Install Dashboard"
-#kubectl apply -f kubernetes-dashboard.yaml
-#kubectl apply -f kubernetes-dashboard-rbac.yaml
+echo "[TASK 6] Install Dashboard"
+kubectl apply -f kubernetes-dashboard.yaml
+kubectl apply -f kubernetes-dashboard-rbac.yaml
 
 echo "[TASK 7] Display All Services"
 kubectl get services -n kube-system 
+
+
 
 figlet NFS
 yum -y install nfs-utils
